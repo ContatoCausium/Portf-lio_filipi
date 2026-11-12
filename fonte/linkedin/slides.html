@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;600;800&family=Caveat:wght@600&display=block" rel="stylesheet">
+<style>
+  :root { --bg:#0e0b0b; --ink:#f3eeec; --mute:#b3abaa; --dim:#6f6766; --red:#ff4a3d; --red2:#e8261c; --line:rgba(243,238,236,.12); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1584px; height:396px; overflow:hidden; background:var(--bg); }
+  body { font-family:"Manrope",sans-serif; color:var(--ink); }
+  .slide { position:relative; width:1584px; height:396px; overflow:hidden; display:none;
+    background:
+      radial-gradient(900px 420px at 92% 10%, rgba(255,74,61,.16), transparent 60%),
+      radial-gradient(700px 380px at 30% 120%, rgba(255,74,61,.07), transparent 60%),
+      var(--bg); }
+  .slide.on { display:block; }
+  .grid { position:absolute; inset:0; background-image:
+      linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:44px 44px; mask-image:linear-gradient(90deg, transparent 0%, #000 45%, #000 100%); opacity:.35; }
+  .grain { position:absolute; inset:0; opacity:.08; background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  .safe { position:absolute; left:430px; right:70px; top:0; bottom:0; display:flex; flex-direction:column; justify-content:center; }
+  .kick { font-weight:800; font-size:15px; letter-spacing:.32em; color:var(--mute); text-transform:uppercase; }
+  .kick b { color:var(--red); font-weight:800; }
+  .display { font-family:"Anton",sans-serif; text-transform:uppercase; line-height:.92; letter-spacing:.01em; }
+  .red { color:var(--red); }
+  .hand { font-family:"Caveat",cursive; color:var(--red); }
+  .mark { position:absolute; right:56px; top:40px; font-family:"Anton"; font-size:30px; letter-spacing:.04em; color:var(--ink); opacity:.9; }
+  .mark i { font-style:normal; color:var(--red); }
+  .url { font-weight:800; font-size:19px; letter-spacing:.08em; color:var(--ink); }
+  .url span { color:var(--red); }
+  .bar { width:84px; height:4px; background:var(--red); border-radius:2px; }
+
+  /* slide 1 */
+  #s1 .display { font-size:94px; margin-top:10px; line-height:1.18; }
+  #s1 .row { display:flex; align-items:flex-end; justify-content:space-between; margin-top:26px; }
+  #s1 .hand { font-size:44px; transform:rotate(-3deg); }
+
+  /* slide 2 */
+  #s2 .display { font-size:74px; margin-top:12px; }
+  .steps { display:flex; gap:0; margin-top:34px; align-items:stretch; }
+  .step { flex:1; position:relative; padding:18px 18px 0 0; border-top:2px solid var(--line); }
+  .step::before { content:""; position:absolute; top:-7px; left:0; width:12px; height:12px; border-radius:50%; background:var(--bg); border:2px solid var(--red); }
+  .step.hot { border-top-color:var(--red); }
+  .step.hot::before { background:var(--red); }
+  .step .n { font-family:"Anton"; font-size:22px; color:var(--red); }
+  .step .t { font-weight:800; font-size:24px; margin-top:4px; }
+  .step .d { font-size:15px; color:var(--mute); margin-top:6px; line-height:1.35; }
+
+  /* slide 3 */
+  #s3 .display { font-size:64px; margin-top:12px; }
+  #s4 .lines { margin-top:20px !important; }
+  .flow { display:flex; align-items:center; gap:14px; margin-top:30px; }
+  .node { border:1.5px solid rgba(243,238,236,.28); border-radius:14px; padding:14px 18px; background:rgba(255,255,255,.03); }
+  .node .t { font-weight:800; font-size:20px; }
+  .node .d { font-size:13.5px; color:var(--mute); margin-top:3px; }
+  .node.hot { border-color:var(--red); background:rgba(255,74,61,.08); }
+  .arrow { color:var(--red); font-size:26px; font-weight:800; }
+  .rail { margin-top:16px; border:1.5px dashed rgba(255,74,61,.55); border-radius:12px; padding:10px 18px; font-size:15px; color:var(--mute); display:inline-block; }
+  .rail b { color:var(--ink); }
+
+  /* slide 4 */
+  #s4 .lines .display { font-size:76px; line-height:1.0; }
+  #s4 .lines .display:nth-child(2) { color:var(--red); }
+
+  /* slide 5 */
+  #s5 .display { font-size:92px; margin-top:12px; }
+  .chips { display:flex; gap:12px; margin-top:24px; flex-wrap:wrap; }
+  .chip { border:1.5px solid rgba(243,238,236,.25); border-radius:999px; padding:9px 18px; font-weight:600; font-size:17px; }
+  .chip.hot { border-color:var(--red); color:var(--ink); background:rgba(255,74,61,.1); }
+  #s5 .foot { display:flex; gap:28px; align-items:center; margin-top:26px; }
+  #s5 .url { white-space:nowrap; font-size:22px; }
+  #s5 .chips { margin-top:0; flex-wrap:nowrap; }
+  #s5 .chip { white-space:nowrap; font-size:16px; padding:9px 16px; }
+  #s5 .stat { margin-left:auto; }
+  .stat { font-family:"Anton"; font-size:40px; }
+  .stat small { font-family:"Manrope"; font-weight:800; font-size:12px; letter-spacing:.2em; color:var(--mute); display:block; margin-top:2px; }
+</style>
+</head>
+<body>
+
+<section class="slide" id="s1">
+  <div class="grid"></div><div class="grain"></div>
+  <div class="mark">F<i>M</i></div>
+  <div class="safe">
+    <div class="kick">Senior AI Engineer <b>/</b> Agentic AI <b>·</b> RAG <b>·</b> Arquitetura</div>
+    <div class="display">Agentes de IA<br>em produção<span class="red">.</span></div>
+    <div class="row">
+      <div class="url">LangGraph · LangChain · Evals · LLMOps · Python</div>
+      <div class="hand">IA nova, disciplina antiga.</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="s2">
+  <div class="grid"></div><div class="grain"></div>
+  <div class="mark">F<i>M</i></div>
+  <div class="safe">
+    <div class="kick">Como eu trabalho <b>/</b> método</div>
+    <div class="display">Do protótipo à produção<span class="red">.</span></div>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><div class="t">Problema</div><div class="d">o que o negócio<br>precisa de verdade</div></div>
+      <div class="step"><div class="n">02</div><div class="t">Arquitetura</div><div class="d">estado, contratos<br>e limites do agente</div></div>
+      <div class="step"><div class="n">03</div><div class="t">Protótipo</div><div class="d">com dataset de<br>casos reais</div></div>
+      <div class="step hot"><div class="n">04</div><div class="t">Confiabilidade</div><div class="d">evals, guardrails<br>e idempotência</div></div>
+      <div class="step hot"><div class="n">05</div><div class="t">Produção</div><div class="d">traces, custo<br>e rollback</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="s3">
+  <div class="grid"></div><div class="grain"></div>
+  <div class="mark">F<i>M</i></div>
+  <div class="safe">
+    <div class="kick">Arquitetura de agentes <b>/</b> RAG</div>
+    <div class="display">O que roda por trás<span class="red">.</span></div>
+    <div class="flow">
+      <div class="node"><div class="t">Entrada</div><div class="d">usuário / sistema</div></div>
+      <div class="arrow">→</div>
+      <div class="node hot"><div class="t">LangGraph</div><div class="d">estado + roteamento</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="t">RAG</div><div class="d">FAISS · Chroma · busca híbrida</div></div>
+      <div class="arrow">→</div>
+      <div class="node"><div class="t">Tools &amp; APIs</div><div class="d">idempotentes</div></div>
+      <div class="arrow">→</div>
+      <div class="node hot"><div class="t">Guardrails</div><div class="d">+ Human-in-the-Loop</div></div>
+    </div>
+    <div class="rail"><b>Evals</b> antes de cada mudança &nbsp;·&nbsp; <b>Langfuse</b> para tracing &nbsp;·&nbsp; <b>custo e latência</b> sob controle</div>
+  </div>
+</section>
+
+<section class="slide" id="s4">
+  <div class="grid"></div><div class="grain"></div>
+  <div class="mark">F<i>M</i></div>
+  <div class="safe">
+    <div class="kick">Princípios <b>/</b> AI Engineering</div>
+    <div class="lines" style="margin-top:14px">
+      <div class="display">Evals antes do deploy.</div>
+      <div class="display">Traces antes do prompt.</div>
+      <div class="display">Autonomia com limites.</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="s5">
+  <div class="grid"></div><div class="grain"></div>
+  <div class="mark">F<i>M</i></div>
+  <div class="safe">
+    <div class="kick">Portfólio <b>/</b> projetos no ar</div>
+    <div class="display">Veja funcionando<span class="red">.</span></div>
+    <div class="foot">
+      <div class="url">www.<span>filipimoraes</span>.com</div>
+      <div class="chips">
+        <div class="chip hot">CauSium · FinOps com IA</div>
+        <div class="chip">Dinequora</div>
+        <div class="chip">Assistente RAG multi-fonte</div>
+      </div>
+      <div class="stat">10+<small>ANOS DE CÓDIGO</small></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const id = (location.hash || '#s1').slice(1);
+  document.getElementById(id).classList.add('on');
+</script>
+</body>
+</html>
