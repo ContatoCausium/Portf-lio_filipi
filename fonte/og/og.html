@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@500;700;800&family=Caveat:wght@600&display=block" rel="stylesheet">
+<style>
+  :root { --pagina:#0b0909; --texto:#f3eeec; --texto2:#b3abaa; --vermelho:#e8261c; --vt:#ff4a3d; --topo:#c9241b; --pe:#4d0e0b; --sel:#3d8bff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:627px; overflow:hidden; background:var(--pagina); }
+  body { font-family:"Manrope",sans-serif; color:var(--texto); position:relative; }
+  .glow { position:absolute; inset:0; background: radial-gradient(520px 420px at 82% 60%, rgba(232,38,28,.22), transparent 70%); }
+  .portfolio { position:absolute; right:-18px; top:96px; font-family:"Anton"; font-size:250px; line-height:.86; letter-spacing:-.01em;
+    background:linear-gradient(180deg,var(--topo),var(--pe)); -webkit-background-clip:text; background-clip:text; color:transparent; opacity:.95; }
+  .foto { position:absolute; right:40px; bottom:0; height:560px; filter:drop-shadow(0 18px 40px rgba(0,0,0,.55)); }
+  .esq { position:absolute; left:64px; top:70px; width:600px; }
+  .kick { font-weight:800; font-size:16px; letter-spacing:.3em; color:var(--texto2); }
+  .kick b { color:var(--vt); }
+  .nome { font-family:"Anton"; font-size:104px; line-height:.95; margin-top:18px; text-transform:uppercase; }
+  .linha { font-weight:800; font-size:34px; letter-spacing:-.03em; margin-top:22px; line-height:1.15; }
+  .linha .pq { display:inline-block; width:12px; height:12px; background:var(--vermelho); margin-left:4px; }
+  .stack { font-weight:700; font-size:20px; color:var(--texto2); margin-top:14px; white-space:nowrap; }
+  .caret { display:inline-block; width:3px; height:22px; background:var(--vt); vertical-align:-4px; margin-left:2px; }
+  .assina { font-family:"Caveat"; font-size:40px; color:var(--vt); margin-top:30px; transform:rotate(-2deg); transform-origin:left; }
+  .url { position:absolute; left:64px; bottom:46px; font-weight:800; font-size:24px; letter-spacing:.06em; }
+  .url span { color:var(--vt); }
+  .sel { position:absolute; border:2px solid var(--sel); border-radius:2px; }
+  .sel i { position:absolute; width:8px; height:8px; background:#fff; border:2px solid var(--sel); }
+  .sel .tag { position:absolute; right:-2px; bottom:-26px; background:var(--sel); color:#fff; font:700 13px "Manrope"; padding:3px 7px; border-radius:3px 3px 3px 0; white-space:nowrap; }
+  .cur { position:absolute; width:26px; height:26px; }
+  .cur .nm { position:absolute; left:20px; top:20px; font:800 12px "Manrope"; color:#0b0909; padding:3px 7px; border-radius:6px; white-space:nowrap; }
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="portfolio">PORTFÓLIO</div>
+  <img class="foto" src="../../public/img/filipi-perfil.webp" alt="">
+  <div class="esq">
+    <div class="kick">SENIOR AI ENGINEER <b>/</b> AGENTIC AI <b>·</b> RAG</div>
+    <div class="nome">Filipi<br>Moraes</div>
+    <div class="linha">Agentes de IA em produção<span class="pq"></span></div>
+    <div class="stack" id="stack"></div>
+    <div class="assina">IA nova, disciplina antiga.</div>
+  </div>
+  <div class="url">www.<span>filipimoraes</span>.com</div>
+  <div class="sel" id="sel"><i style="left:-5px;top:-5px"></i><i style="right:-5px;top:-5px"></i><i style="left:-5px;bottom:-5px"></i><i style="right:-5px;bottom:-5px"></i><div class="tag" id="tag"></div></div>
+  <div id="curs"></div>
+<script>
+  const t = parseFloat((location.hash.match(/t=([\d.]+)/)||[0,0])[1]); // 0..1, loop
+  const TAU = Math.PI*2;
+  // stack typed: starts complete at t=0, erases and retypes (loop-safe: complete at t=0 and t=1)
+  const full = 'LangGraph · RAG · Evals · LLMOps · Python';
+  let n = full.length;
+  if (t > 0.45 && t < 0.62) n = Math.round(full.length * (1 - (t-0.45)/0.17));
+  else if (t >= 0.62 && t < 0.92) n = Math.round(full.length * ((t-0.62)/0.30));
+  n = Math.max(0, Math.min(full.length, n));
+  const caretOn = (t < 0.45 || t >= 0.92) ? (Math.floor(t*12)%2===0) : true;
+  document.getElementById('stack').innerHTML = full.slice(0,n) + (caretOn?'<span class="caret"></span>':'');
+  // selection box alternates between the name and the photo, loop-safe
+  const sel = document.getElementById('sel'), tag = document.getElementById('tag');
+  const A = {x:56,y:106,w:338,h:204,lbl:'Filipi Moraes · 338 × 204'};
+  const B = {x:760,y:70,w:400,h:557,lbl:'foto · 400 × 557'};
+  const k = (1 - Math.cos(TAU * t)) / 2; // 0 -> 1 -> 0
+  const ease = k<.5 ? 4*k*k*k : 1-Math.pow(-2*k+2,3)/2;
+  const r = {x:A.x+(B.x-A.x)*ease, y:A.y+(B.y-A.y)*ease, w:A.w+(B.w-A.w)*ease, h:A.h+(B.h-A.h)*ease};
+  Object.assign(sel.style,{left:r.x+'px',top:r.y+'px',width:r.w+'px',height:r.h+'px'});
+  tag.textContent = ease<.5 ? A.lbl : B.lbl;
+  // cursors on closed loops
+  const cs = [
+    {c:'#ff9f8f', n:'arquitetura', cx:470, cy:140, rx:80, ry:30, ph:0.0},
+    {c:'#8fd3ff', n:'evals',       cx:620, cy:460, rx:110, ry:40, ph:0.33},
+    {c:'#b7f28f', n:'rag',         cx:980, cy:120, rx:70, ry:45, ph:0.66},
+    {c:'#ffd88f', n:'langgraph',   cx:560, cy:540, rx:70, ry:22, ph:0.15},
+  ];
+  const box = document.getElementById('curs');
+  for (const q of cs) {
+    const a = TAU*(t+q.ph);
+    const x = q.cx + q.rx*Math.cos(a), y = q.cy + q.ry*Math.sin(2*a)/1.4;
+    box.insertAdjacentHTML('beforeend', `<div class="cur" style="left:${x}px;top:${y}px"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M3 2 L21 11 L12.5 13 L9 21 Z" fill="${q.c}" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="nm" style="background:${q.c}">${q.n}</span></div>`);
+  }
+</script>
+</body>
+</html>
