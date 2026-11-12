@@ -1,0 +1,53 @@
+<!-- Hero (uma tela, escala de cena). Cada bloco com data-camada é uma camada que os agentes montam: quadro (o fundo),
+     titulo, texto (digitado), bloco (caixa que aparece; se tiver camadas dentro, só o fundo e a borda dela) e foto.
+     data-parte divide o hero em montagens separadas no celular, onde ele tem mais de uma tela. -->
+<section class="hero" id="topo" data-montagem="hero">
+  <div class="hero__quadro" data-camada="quadro" aria-hidden="true"></div>
+
+  <div class="hero__a" data-parte>
+    <p class="hero__papel">
+      <span class="hero__papel-1" data-camada="texto">Senior AI Engineer</span>
+      <span class="hero__papel-2" data-camada="texto">Agentic AI · RAG · Arquitetura</span>
+    </p>
+    <p class="hero__status" data-camada="texto"><i class="ponto" aria-hidden="true"></i>Agentes de IA em produção</p>
+
+    <p class="hero__titulo" data-camada="titulo" aria-hidden="true"><span>PORTFÓLIO</span></p>
+
+    <!-- retrato recortado (fonte/filipi-foto.jpg → fonte/filipi-recorte.png), cabeça e ombros, 900 × 1140 com alfa -->
+    <figure class="hero__foto">
+      <span class="hero__retrato" data-camada="foto" data-ajusta="96,-34"><img src="/img/filipi-perfil.webp" width="900" height="1140" alt="Filipi Moraes, de óculos e blusa azul-marinho, sorrindo de leve" fetchpriority="high" decoding="async" /></span>
+    </figure>
+
+    <div class="hero__esq">
+      <h1 class="hero__quem">
+        <span class="hero__ola" data-camada="texto">Olá, eu sou</span>
+        <span class="hero__nome" data-camada="texto">FILIPI<span class="pq">.</span></span>
+      </h1>
+      <p class="hero__cargo" data-camada="texto">Engenheiro de IA<br />sênior</p>
+      <p class="hero__texto" data-camada="texto">Coloco IA generativa em produção: agentes com LangGraph, RAG, guardrails, evals e observabilidade, ligados aos sistemas da empresa. Testável, governado e no ar.</p>
+      <a class="hero__botao sel" href="#projetos" data-camada="bloco"><span data-camada="texto"><span>Ver projetos</span><svg class="ico" aria-hidden="true"><use href="#u-baixo"/></svg></span></a>
+      <p class="hero__local" data-camada="texto"><svg class="ico" aria-hidden="true"><use href="#u-local"/></svg><span>Recife, PE · Remoto</span></p>
+    </div>
+  </div>
+
+  <div class="hero__dir" data-parte>
+    <p class="hero__lema">
+      <span class="hero__aster anel" data-camada="bloco" aria-hidden="true"><svg class="ico"><use href="#u-aster"/></svg></span>
+      <span data-camada="texto">IA nova,<br />disciplina antiga.</span>
+    </p>
+    <ul class="hero__numeros" data-duplica>
+      <li><strong data-camada="texto">10<span class="mais">+</span></strong><span data-camada="texto">Anos escrevendo<br />código</span></li>
+      <li><strong data-camada="texto">9</strong><span data-camada="texto">Certificações em<br />IA, cloud e segurança</span></li>
+      <li><a class="hero__num-link sel" href="https://www.linkedin.com/in/filipimoraes/" target="_blank" rel="noopener"><strong data-camada="texto">9<span class="mais">mil</span></strong><span data-camada="texto">Seguidores no<br />LinkedIn<svg class="ico" aria-hidden="true"><use href="#u-ne"/></svg></span></a></li>
+    </ul>
+  </div>
+
+  <div class="hero__pe" data-parte>
+    <a class="hero__caso sel" href="#bastidor">
+      <span class="hero__play anel" data-camada="bloco" aria-hidden="true"><svg class="ico"><use href="#u-play"/></svg></span>
+      <span data-camada="texto">Ver um caso por dentro</span>
+      <span class="hero__caso-tipo" data-camada="texto">CauSium / FinOps</span>
+    </a>
+    <p class="hero__anos" data-camada="texto">Construindo software / 2016–2026</p>
+  </div>
+</section>

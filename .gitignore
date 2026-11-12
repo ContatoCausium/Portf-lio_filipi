@@ -1,0 +1,17 @@
+node_modules
+dist
+.vercel
+
+# material da demo do Kairo (prints de referência, receitas, o zip original e a foto da pessoa que não existe)
+kairo-arquivos/
+kairo-arquivos.zip
+fonte/retrato.png
+
+# configuração local do editor
+.claude/
+
+# sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log

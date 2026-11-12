@@ -1,0 +1,39 @@
+<!-- 04 Artigos: o que escrevi no LinkedIn. Dois cards lado a lado (número vermelho, data, título, resumo, tags e
+     "ler"); o primeiro nasce do zero e o segundo sai de uma cópia (data-duplica).
+     PENDENTE: os dois cards abrem a página de artigos do perfil; trocar pelo link direto de cada artigo. -->
+<section class="secao artigos" id="artigos" data-montagem="artigos" data-reforco="1">
+  <div class="secao__dentro">
+    <div class="secao__topo">
+      <div>
+        <span class="secao__rotulo" data-camada="texto">04 / Artigos</span>
+        <h2 class="titulo-grot" data-camada="texto" data-ajusta="56,0">Escrito em produção<span class="pq">.</span></h2>
+      </div>
+      <a class="link-seta sel" href="https://www.linkedin.com/in/filipimoraes/recent-activity/articles/" target="_blank" rel="noopener" data-camada="texto"><span>Todos no LinkedIn</span> <svg class="ico" aria-hidden="true"><use href="#u-dir"/></svg></a>
+    </div>
+
+    <ul class="artigos__lista" data-duplica>
+      <li>
+        <a class="artigo sel" href="https://www.linkedin.com/in/filipimoraes/recent-activity/articles/" target="_blank" rel="noopener" data-camada="bloco">
+          <span class="artigo__topo"><strong class="artigo__num" data-camada="texto">01</strong><span class="artigo__data" data-camada="texto">19 fev 2026</span></span>
+          <span class="artigo__titulo" data-camada="texto">Building Enterprise Payment Systems: Microservices, Saga Pattern, and Observability at Scale</span>
+          <span class="artigo__resumo" data-camada="texto">O projeto de referência que levei três meses para construir: um sistema de pagamentos com microsserviços, padrão Saga e observabilidade.</span>
+          <span class="artigo__pe">
+            <span class="artigo__tags" data-camada="texto">Microsserviços · Saga · Observabilidade</span>
+            <span class="artigo__ler" data-camada="texto"><span>Ler no LinkedIn</span><svg class="ico" aria-hidden="true"><use href="#u-ne"/></svg></span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a class="artigo sel" href="https://www.linkedin.com/in/filipimoraes/recent-activity/articles/" target="_blank" rel="noopener" data-camada="bloco">
+          <span class="artigo__topo"><strong class="artigo__num" data-camada="texto">02</strong><span class="artigo__data" data-camada="texto">21 jan 2026</span></span>
+          <span class="artigo__titulo" data-camada="texto">Engenharia de Performance: Como Otimizei um Roguelite Cross-Platform para 60 FPS Estáveis no Navegador</span>
+          <span class="artigo__resumo" data-camada="texto">Do primeiro lag spike causado pelo garbage collector até 60 FPS estáveis, num jogo que roda inteiro no navegador.</span>
+          <span class="artigo__pe">
+            <span class="artigo__tags" data-camada="texto">Performance · Web · Games</span>
+            <span class="artigo__ler" data-camada="texto"><span>Ler no LinkedIn</span><svg class="ico" aria-hidden="true"><use href="#u-ne"/></svg></span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>

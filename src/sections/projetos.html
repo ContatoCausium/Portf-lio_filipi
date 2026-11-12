@@ -1,0 +1,124 @@
+<!-- 01 Projetos: cabeçalho, filtro em abas com busca, os cards (print, número vermelho, nome, categoria/ano) e a
+     faixa das ferramentas. Os cards montam em paralelo; depois um agente testa o filtro. -->
+<section class="secao projetos" id="projetos" data-montagem="projetos" data-reforco="4">
+  <div class="secao__dentro">
+    <div class="secao__topo">
+      <div>
+        <span class="secao__rotulo" data-camada="texto">01 / Projetos selecionados</span>
+        <h2 class="titulo-grot" data-camada="texto" data-ajusta="64,0">Trabalho que roda sozinho<span class="pq">.</span></h2>
+      </div>
+      <a class="link-seta sel" href="https://github.com/FilipiWanderley" target="_blank" rel="noopener" data-camada="texto"><span>Mais no GitHub</span> <svg class="ico" aria-hidden="true"><use href="#u-dir"/></svg></a>
+    </div>
+
+    <div class="projetos__barra">
+      <div class="abas filtro" role="group" aria-label="Filtrar projetos" data-teste="1,0">
+        <button class="aba" type="button" data-filtro="todos" aria-pressed="true" data-camada="texto">Todos</button>
+        <button class="aba" type="button" data-filtro="agentes" aria-pressed="false" data-camada="texto">Agentes</button>
+        <button class="aba" type="button" data-filtro="rag" aria-pressed="false" data-camada="texto">RAG</button>
+        <button class="aba" type="button" data-filtro="produto" aria-pressed="false" data-camada="texto">Produto</button>
+      </div>
+      <label class="busca">
+        <svg class="ico" aria-hidden="true"><use href="#u-busca"/></svg>
+        <span class="busca__rotulo" data-camada="texto">Buscar</span>
+        <input class="busca__campo" type="search" placeholder="Nome ou categoria" autocomplete="off" data-camada="bloco" />
+      </label>
+    </div>
+
+    <!-- Prints reais: o hero de causiumtech.com e a tela da cozinha de dinequora.com (modo escuro, 1280 × 800).
+         PENDENTE: a tela do Multi-Source AI Assistant ainda é imagem da demo (gerada). -->
+    <ul class="projetos__grade" data-duplica>
+      <li class="projeto" data-tipo="agentes" data-busca="causium fundador saas finops cloud custos agentes governança aws azure gcp clickhouse multi-tenant">
+        <a class="projeto__link" href="https://www.causiumtech.com" target="_blank" rel="noopener">
+          <span class="projeto__img" data-camada="foto"><img src="/img/proj-causium.webp" width="1280" height="800" alt="Site do CauSium em modo escuro, com o título Your cloud costs. Under control. e o símbolo da marca no centro de um redemoinho de linhas" loading="lazy" decoding="async" /></span>
+          <span class="projeto__etiqueta" data-camada="texto">SaaS B2B</span>
+          <span class="projeto__pe" data-camada="bloco">
+            <strong class="projeto__num" data-camada="texto">01</strong>
+            <span class="projeto__nome" data-camada="texto">CauSium</span>
+            <span class="projeto__meta" data-camada="texto">SaaS FinOps com IA / fundador</span>
+            <svg class="ico projeto__seta" aria-hidden="true"><use href="#u-ne"/></svg>
+          </span>
+        </a>
+      </li>
+      <li class="projeto" data-tipo="produto" data-busca="dinequora fundador restaurante restaurantes saas produto pdv caixa cozinha kds estoque compras financeiro unidades">
+        <a class="projeto__link" href="https://dinequora.com" target="_blank" rel="noopener">
+          <span class="projeto__img" data-camada="foto"><img src="/img/proj-dinequora.webp" width="1280" height="800" alt="Tela da cozinha do Dinequora em modo escuro, com os pedidos em quatro colunas, de novos a concluídos" loading="lazy" decoding="async" /></span>
+          <span class="projeto__etiqueta" data-camada="texto">No ar</span>
+          <span class="projeto__pe" data-camada="bloco">
+            <strong class="projeto__num" data-camada="texto">02</strong>
+            <span class="projeto__nome" data-camada="texto">Dinequora</span>
+            <span class="projeto__meta" data-camada="texto">SaaS para restaurantes / fundador</span>
+            <svg class="ico projeto__seta" aria-hidden="true"><use href="#u-ne"/></svg>
+          </span>
+        </a>
+      </li>
+      <li class="projeto" data-tipo="rag" data-busca="multi-source ai assistant assistente rag langchain faiss openai fastapi pdf busca semântica">
+        <a class="projeto__link" href="#trajetoria">
+          <span class="projeto__img" data-camada="foto"><img src="/img/proj-balcao.webp" width="1600" height="1000" alt="Tela ilustrativa de um painel com conversa de assistente em modo escuro" loading="lazy" decoding="async" /></span>
+          <span class="projeto__etiqueta" data-camada="texto">Assistente</span>
+          <span class="projeto__pe" data-camada="bloco">
+            <strong class="projeto__num" data-camada="texto">03</strong>
+            <span class="projeto__nome" data-camada="texto">Multi-Source AI Assistant</span>
+            <span class="projeto__meta" data-camada="texto">RAG · LangChain · FAISS</span>
+            <svg class="ico projeto__seta" aria-hidden="true"><use href="#u-ne"/></svg>
+          </span>
+        </a>
+      </li>
+    </ul>
+    <p class="projetos__vazio" hidden>Nenhum projeto com esse nome. <button type="button" class="projetos__limpa">Limpar a busca</button></p>
+  </div>
+
+  <!-- ferramentas: faixa que corre sozinha (pausa, setas) e "ver todas" abre a grade com os nomes -->
+  <div class="secao__dentro ferramentas" data-montagem="ferramentas">
+    <div class="ferramentas__topo">
+      <p class="ferramentas__titulo"><span data-camada="texto">Feito com</span><strong data-camada="texto">As ferramentas de sempre.</strong></p>
+      <div class="ferramentas__ctl">
+        <button class="ferramentas__todas" type="button" aria-expanded="false" data-camada="texto"><span class="ferramentas__todas-t">Ver todas (12)</span> <svg class="ico" aria-hidden="true"><use href="#u-mais"/></svg></button>
+        <button class="ferramentas__btn ferramentas__pausa" type="button" aria-label="Pausar a faixa" aria-pressed="false" data-camada="bloco"><svg class="ico" aria-hidden="true"><use href="#u-pausa"/></svg></button>
+        <button class="ferramentas__btn" type="button" aria-label="Voltar" data-passo="-1" data-camada="bloco"><svg class="ico" aria-hidden="true"><use href="#u-esq-v"/></svg></button>
+        <button class="ferramentas__btn" type="button" aria-label="Avançar" data-passo="1" data-camada="bloco"><svg class="ico" aria-hidden="true"><use href="#u-dir-v"/></svg></button>
+      </div>
+    </div>
+    <div class="ferramentas__janela">
+      <ul class="ferramentas__trilho">
+        <li data-camada="bloco"><svg aria-hidden="true"><use href="#i-python"/></svg><span>Python</span></li>
+        <li data-camada="bloco"><svg aria-hidden="true"><use href="#i-langgraph"/></svg><span>LangGraph</span></li>
+        <li data-camada="bloco"><svg aria-hidden="true"><use href="#i-langchain"/></svg><span>LangChain</span></li>
+        <li data-camada="bloco"><svg aria-hidden="true"><use href="#i-fastapi"/></svg><span>FastAPI</span></li>
+        <li data-camada="bloco"><svg aria-hidden="true"><use href="#i-claude"/></svg><span>Claude</span></li>
+        <li data-camada="bloco"><svg aria-hidden="true"><use href="#i-postgresql"/></svg><span>Postgres</span></li>
+        <li data-camada="bloco"><svg aria-hidden="true"><use href="#i-clickhouse"/></svg><span>ClickHouse</span></li>
+        <li data-camada="bloco"><svg aria-hidden="true"><use href="#i-docker"/></svg><span>Docker</span></li>
+        <li data-camada="bloco"><svg aria-hidden="true"><use href="#i-kubernetes"/></svg><span>Kubernetes</span></li>
+        <li data-camada="bloco"><svg aria-hidden="true"><use href="#i-springboot"/></svg><span>Spring Boot</span></li>
+        <li data-camada="bloco"><svg aria-hidden="true"><use href="#i-react"/></svg><span>React</span></li>
+        <li data-camada="bloco"><svg aria-hidden="true"><use href="#i-typescript"/></svg><span>TypeScript</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Bastidor: do rascunho ao ar. Comparador arrastável entre o wireframe e a tela final; depois de montado, um agente
+     pega a alça e arrasta de um lado para o outro.
+     As duas imagens saem do painel de causiumtech.com, no mesmo enquadramento: a tela escurecida e o rascunho desenhado
+     por cima do mesmo layout (fonte/capturas/comp.py refaz as duas). -->
+<section class="secao bastidor" id="bastidor" data-montagem="bastidor">
+  <div class="secao__dentro bastidor__grade">
+    <div class="bastidor__texto">
+      <span class="secao__rotulo" data-camada="texto">Por baixo do capô</span>
+      <h2 class="titulo-cond bastidor__titulo"><span data-camada="texto">Do rascunho<span class="pq">.</span></span> <span class="vermelho" data-camada="texto">Ao ar.</span></h2>
+      <p class="bastidor__p" data-camada="texto">FinOps para cloud, de ponta a ponta: conector Azure somente leitura, isolamento por organização com row-level security, custos no padrão FOCUS e números explicáveis, com a evidência por trás de cada valor.</p>
+      <p class="bastidor__meta"><span data-camada="texto">CauSium · SaaS FinOps / fundador · 2026</span><span data-camada="texto">Azure · multi-tenant · beta privado</span></p>
+    </div>
+    <div class="bastidor__peca">
+      <div class="comp" data-camada="foto" data-teste="arraste" data-ajusta="-70,44" style="--p: 50%">
+        <img class="comp__depois" src="/img/causium-painel.webp" width="1280" height="800" alt="Visão executiva do CauSium com dados de exemplo: gasto em cloud, tendência de custo com previsão e saúde dos dados" loading="lazy" decoding="async" />
+        <div class="comp__antes"><img src="/img/causium-rascunho.webp" width="1280" height="800" alt="Rascunho da mesma tela em caixas cinza, com anotações à mão" loading="lazy" decoding="async" /></div>
+        <span class="comp__etq comp__etq--antes">Rascunho</span>
+        <span class="comp__etq comp__etq--depois">No ar</span>
+        <span class="comp__alca" aria-hidden="true"><svg class="ico"><use href="#u-esq-v"/></svg><svg class="ico"><use href="#u-dir-v"/></svg></span>
+        <input class="comp__range" type="range" min="0" max="100" step="1" value="50" aria-label="Comparar o rascunho com a versão no ar" />
+      </div>
+      <p class="comp__legenda"><span data-camada="texto">Arraste para ver o processo</span><span data-camada="texto">Arraste / setas</span></p>
+    </div>
+  </div>
+</section>
