@@ -74,9 +74,30 @@
   html:not(.rolando) .nav__cta:hover svg { translate: 2px -2px; }
 }
 
+/* lado direito: a troca de língua (PT · EN) antes da conversa */
+.nav__dir { justify-self: end; display: flex; align-items: center; gap: 28px; }
+.nav__idioma { display: flex; align-items: center; gap: 2px; }
+.nav__idioma a {
+  display: inline-grid;
+  place-items: center;
+  min-width: 34px;
+  min-height: 34px;
+  font: 600 13px / 1 var(--sans);
+  letter-spacing: 0.06em;
+  color: var(--texto-3);
+  transition: color var(--t-micro) var(--ease);
+}
+.nav__idioma a[aria-current='true'] { color: var(--texto); }
+.nav__idioma a:first-child { box-shadow: 1px 0 0 0 var(--fio-forte); }   /* o fio entre PT e EN */
+@media (hover: hover) and (pointer: fine) {
+  html:not(.rolando) .nav__idioma a:not([aria-current='true']):hover { color: var(--texto); }
+}
+
 @media (max-width: 760px) {
   .nav__dentro { grid-template-columns: 1fr auto; height: 58px; }
   .nav__links { display: none; }
   .nav__nome { font-size: 24px; }
+  .nav__dir { gap: 12px; }
+  .nav__idioma a { min-width: 32px; min-height: 44px; font-size: 12px; }
   .nav__cta { font-size: 15px; padding: 12px 0; }
 }

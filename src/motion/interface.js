@@ -2,6 +2,7 @@
 // trajetória, replay. Funcionam sozinhos, com ou sem enxame. Quando a pessoa mexe num deles (ponteiro ou teclado),
 // o grupo ganha data-tocado e os agentes não o testam mais.
 import { gsap } from 'gsap';
+import { t } from './idioma.js';
 
 const raiz = document.documentElement;
 const marcaToque = (el) => {
@@ -76,7 +77,7 @@ function ferramentas(el) {
   pausa.addEventListener('click', () => {
     parado = !parado;
     pausa.setAttribute('aria-pressed', String(parado));
-    pausa.setAttribute('aria-label', parado ? 'Continuar a faixa' : 'Pausar a faixa');
+    pausa.setAttribute('aria-label', parado ? t('Continuar a faixa', 'Resume the strip') : t('Pausar a faixa', 'Pause the strip'));
   });
   el.querySelectorAll('[data-passo]').forEach((b) => b.addEventListener('click', () => {
     const o = { x };
@@ -93,7 +94,7 @@ function ferramentas(el) {
     const abre = !el.classList.contains('todas');
     el.classList.toggle('todas', abre);
     todas.setAttribute('aria-expanded', String(abre));
-    todas.querySelector('.ferramentas__todas-t').textContent = abre ? 'Ver menos' : 'Ver todas (12)';
+    todas.querySelector('.ferramentas__todas-t').textContent = abre ? t('Ver menos', 'See less') : t('Ver todas (12)', 'See all (12)');
     if (!abre) poe();
   });
 }
@@ -136,8 +137,12 @@ function formulario(form) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const d = new FormData(form);
-    const corpo = `Nome: ${d.get('nome')}\nE-mail: ${d.get('email')}\n\nAssunto:\n${d.get('tarefa')}`;
-    location.href = `mailto:filipiwms@gmail.com?subject=${encodeURIComponent('Conversa pelo portfólio')}&body=${encodeURIComponent(corpo)}`;
+    const corpo = t(
+      `Nome: ${d.get('nome')}\nE-mail: ${d.get('email')}\n\nAssunto:\n${d.get('tarefa')}`,
+      `Name: ${d.get('nome')}\nEmail: ${d.get('email')}\n\nTopic:\n${d.get('tarefa')}`,
+    );
+    const assunto = t('Conversa pelo portfólio', 'Hello from your portfolio');
+    location.href = `mailto:filipiwms@gmail.com?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
   });
 }
 

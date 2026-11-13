@@ -1,5 +1,7 @@
 // Barra dos agentes: mostra o escaneamento, quantas camadas já foram montadas e os controles (Tour, velocidade,
 // montar de novo). Só interface: quem decide o que acontece é o enxame.
+import { local, t } from './idioma.js';
+
 export function barra() {
   const el = document.querySelector('.barra');
   const q = (s) => el.querySelector(s);
@@ -22,7 +24,7 @@ export function barra() {
     // página inteira montada: "Montada por N agentes em T s"
     fim(n, s) {
       fimN.textContent = n;
-      fimT.textContent = `${s.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} s`;
+      fimT.textContent = `${s.toLocaleString(local, { maximumFractionDigits: 1 })} s`;
       el.dataset.estado = 'fim';
     },
     scan(p) { scan.style.transform = `scaleX(${p})`; },
@@ -32,11 +34,11 @@ export function barra() {
     },
     tour(on) {
       btTour.setAttribute('aria-pressed', String(on));
-      btTour.textContent = on ? 'Em tour' : 'Tour';
+      btTour.textContent = on ? t('Em tour', 'On tour') : 'Tour';
     },
     vel(v) {
       btVel.textContent = `${v}×`;
-      btVel.setAttribute('aria-label', `Velocidade dos agentes: ${v}×`);
+      btVel.setAttribute('aria-label', `${t('Velocidade dos agentes', 'Agent speed')}: ${v}×`);
     },
     aoTour(fn) { btTour.addEventListener('click', fn); },
     aoVel(fn) { btVel.addEventListener('click', fn); },

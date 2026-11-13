@@ -2,6 +2,8 @@
 
 O site de **[www.filipimoraes.com](https://www.filipimoraes.com)**: um portfólio que se monta na frente de quem visita. Um enxame de cursores, como colegas num editor multiplayer, desenha cada bloco ao vivo (caixa com a medida → esboço → conteúdo). Vite sem framework, GSAP e as fontes Anton, Caveat e Manrope pelo Fontsource.
 
+Em duas línguas: português em [`/`](https://www.filipimoraes.com/) e inglês em [`/en/`](https://www.filipimoraes.com/en/), com o seletor PT · EN na nav. As seções em inglês ficam em `src/sections/en/`.
+
 O guia completo da arquitetura, do design system e das regras de motion está em [`CLAUDE.md`](CLAUDE.md).
 
 ## Rodar no computador

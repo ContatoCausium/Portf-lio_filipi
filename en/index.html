@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Filipi Moraes · Senior AI Engineer</title>
+    <meta name="description" content="Portfolio of Filipi Moraes, Senior AI Engineer: agents with LangGraph, RAG, guardrails, evals and observability, taken from prototype to production." />
+    <meta name="theme-color" content="#0b0909" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href="https://www.filipimoraes.com/en/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://www.filipimoraes.com/" />
+    <link rel="alternate" hreflang="en" href="https://www.filipimoraes.com/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.filipimoraes.com/" />
+    <!-- no dev do Vite o CSS entra pelo JS: o body espera escondido até src/estilo.js (ou 6 s, se algo falhar), e nada
+         transiciona do estilo padrão do navegador para o da página -->
+    <style>html { background: #0b0909; } html:not(.com-estilo) body { visibility: hidden; animation: mostra 0s 6s forwards; } @keyframes mostra { to { visibility: visible; } } html:not(.assentou) *, html:not(.assentou) ::before, html:not(.assentou) ::after { transition: none !important; }</style>
+    <noscript><style>body { visibility: visible !important; animation: none; }</style></noscript>
+    <link rel="preload" as="image" href="/img/filipi-perfil.webp" fetchpriority="high" />
+    <script>
+      // ?reel (ou ?reel=0.75): para gravar a tela com o celular. Baixa só o branco das letras (padrão 0.82, entre 0.5 e
+      // 1) e esconde a barra de rolagem; o resto da página fica igual.
+      (function () {
+        var r = new URLSearchParams(location.search).get('reel');
+        if (r === null) return;
+        var k = Math.min(1, Math.max(0.5, parseFloat(r) || 0.82));
+        document.documentElement.classList.add('reel');
+        document.documentElement.style.setProperty('--reel', k);
+      })();
+    </script>
+    <script>
+      // "monta": os agentes constroem a página na frente de quem vê. "pronto": a página já abre montada
+      // (?pronto na URL ou movimento reduzido). Se o motion não subir em 5 s, a página aparece pronta.
+      (function () {
+        var r = document.documentElement;
+        var pronto = /[?&]pronto\b/.test(location.search) || matchMedia('(prefers-reduced-motion: reduce)').matches;
+        r.classList.add('js', pronto ? 'pronto' : 'monta');
+        if (matchMedia('(hover: none)').matches) r.classList.add('toque');
+        if (!pronto) setTimeout(function () { if (!window.__enxame) { r.classList.remove('monta'); r.classList.add('pronto'); } }, 5000);
+      })();
+    </script>
+  </head>
+  <body>
+    <!-- @secao icones -->
+    <!-- @secao nav -->
+    <main>
+      <!-- @secao hero -->
+      <!-- @secao projetos -->
+      <!-- @secao sobre -->
+      <!-- @secao trajetoria -->
+      <!-- @secao artigos -->
+      <!-- @secao contato -->
+    </main>
+    <!-- @secao barra -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
