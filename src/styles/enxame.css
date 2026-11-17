@@ -118,6 +118,7 @@ html.monta [data-camada='titulo'].c-viva .letra { opacity: 0; }
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
+.cx__tam::after { content: attr(data-tam); }   /* a medida vem do atributo (caixas.js): desenho, não texto */
 .cx.digitando .cx__tam,
 .cx.digitando .cx__h,
 .cx.sem-medida .cx__tam { opacity: 0; }

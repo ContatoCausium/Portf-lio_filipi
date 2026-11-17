@@ -41,7 +41,9 @@ export function caixa(palco, r, { icone = false, fundo = null, grande = false } 
       if (!viva) return;
       el.style.width = `${w}px`;
       el.style.height = `${h}px`;
-      tam.textContent = `${Math.round(w)} × ${Math.round(h)}`;
+      // a medida é desenho do agente, não texto da página: vai num atributo e o CSS a mostra (content: attr), para
+      // leitores de tela e auditorias de contraste não lerem a etiqueta no meio do fade
+      tam.dataset.tam = `${Math.round(w)} × ${Math.round(h)}`;
     },
     // caixa posta: alças e placeholder
     fixa() {
