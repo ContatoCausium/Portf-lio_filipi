@@ -24,7 +24,7 @@
 
   /* ferramenta dos agentes (seleção, etiqueta de medida, placeholder) */
   --sel: #3ea2ff;
-  --sel-etiqueta: #1b8cf2;
+  --sel-etiqueta: #0c75d3;     /* a etiqueta da medida: branco por cima com contraste de 4,67:1 */
   --marcador: rgba(158, 164, 178, 0.2);          /* caixa pequena (texto, botão) */
   --marcador-grande: rgba(158, 164, 178, 0.05);  /* caixa grande (foto, título, card): não acinzenta a tela */
   --marcador-quadro: rgba(128, 134, 150, 0.025);  /* o fundo de rascunho: só um tom acima do preto */

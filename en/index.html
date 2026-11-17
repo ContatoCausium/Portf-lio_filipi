@@ -28,11 +28,13 @@
     <link rel="alternate" hreflang="pt-BR" href="https://www.filipimoraes.com/" />
     <link rel="alternate" hreflang="en" href="https://www.filipimoraes.com/en/" />
     <link rel="alternate" hreflang="x-default" href="https://www.filipimoraes.com/" />
+    <!-- dados estruturados: quem é a pessoa por trás do site (só o que aparece na página) -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://www.filipimoraes.com/#filipi", "name": "Filipi Moraes", "alternateName": "Filipi Wanderley de Moraes Silva", "jobTitle": "Senior AI Engineer", "description": "Senior AI Engineer who puts generative AI into production: agents with LangGraph, RAG, guardrails, evals and observability.", "url": "https://www.filipimoraes.com/en/", "image": "https://www.filipimoraes.com/img/filipi-perfil.webp", "email": "mailto:filipiwms@gmail.com", "address": {"@type": "PostalAddress", "addressLocality": "Recife", "addressRegion": "PE", "addressCountry": "BR"}, "worksFor": {"@type": "Organization", "name": "Engineering Brasil (ENGDB)"}, "knowsAbout": ["Agentic AI", "Generative AI", "RAG", "LangGraph", "LangChain", "Langfuse", "Python", "FastAPI", "LLM evals", "Guardrails", "FinOps"], "sameAs": ["https://www.linkedin.com/in/filipimoraes/", "https://github.com/FilipiWanderley"]}, {"@type": "WebSite", "@id": "https://www.filipimoraes.com/en/#site", "url": "https://www.filipimoraes.com/en/", "name": "Filipi Moraes", "inLanguage": "en", "author": {"@id": "https://www.filipimoraes.com/#filipi"}}]}</script>
     <!-- no dev do Vite o CSS entra pelo JS: o body espera escondido até src/estilo.js (ou 6 s, se algo falhar), e nada
          transiciona do estilo padrão do navegador para o da página -->
     <style>html { background: #0b0909; } html:not(.com-estilo) body { visibility: hidden; animation: mostra 0s 6s forwards; } @keyframes mostra { to { visibility: visible; } } html:not(.assentou) *, html:not(.assentou) ::before, html:not(.assentou) ::after { transition: none !important; }</style>
     <noscript><style>body { visibility: visible !important; animation: none; }</style></noscript>
-    <link rel="preload" as="image" href="/img/filipi-perfil.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="/img/filipi-perfil.webp" imagesrcset="/img/filipi-perfil-450.webp 450w, /img/filipi-perfil-640.webp 640w, /img/filipi-perfil.webp 900w" imagesizes="(max-width: 760px) 84vw, 36vw" fetchpriority="high" />
     <script>
       // ?reel (ou ?reel=0.75): para gravar a tela com o celular. Baixa só o branco das letras (padrão 0.82, entre 0.5 e
       // 1) e esconde a barra de rolagem; o resto da página fica igual.
